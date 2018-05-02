@@ -1,0 +1,39 @@
+{
+  "name": "refa",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukipastelcat/refa.git"
+  },
+  "author": "yukipastelcat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yukipastelcat/refa/issues"
+  },
+  "homepage": "https://github.com/yukipastelcat/refa#readme",
+  "devDependencies": {
+    "browserify": "^16.2.0",
+    "electron-packager": "^12.0.1",
+    "event-stream": "^3.3.4",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-ext-replace": "^0.3.0",
+    "gulp-inline-assets": "^0.1.1",
+    "gulp-less": "^4.0.0",
+    "gulp-uglify": "^3.0.0",
+    "mocha": "^5.1.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "citation-js": "^0.4.0-1",
+    "electron": "^2.0.0",
+    "pug": "^2.0.3"
+  }
+}
