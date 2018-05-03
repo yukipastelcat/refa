@@ -1,3 +1,5 @@
 node_modules
 package-lock.json
 src/bundles/*.css
+src/bundles/*.js
+!src/bundles/*.decl.js
