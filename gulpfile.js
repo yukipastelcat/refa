@@ -41,4 +41,9 @@ gulp.task('build-js', function (done) {
 
 gulp.task('watch', function () {
     gulp.watch('./src/bundles/*.decl.less', ['build-css']);
+    gulp.watch('./src/blocks/*.less', ['build-css']);
+    gulp.watch('./src/blocks/**/*.less', ['build-css']);
+    gulp.watch('./src/bundles/*.decl.js', ['build-js']);
+    gulp.watch('./src/bundles/*.js', ['build-js']);
+    gulp.watch('./src/bundles/**/*.js', ['build-js']);
 });

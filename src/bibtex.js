@@ -1,6 +1,6 @@
 let Cite = require('citation-js');
 
-async function parse(contents) {
+async function bibtexToJson (contents) {
     let bibtex;
     try {
         bibtex = await Cite.parse.bibtex.text(contents);
@@ -11,4 +11,4 @@ async function parse(contents) {
     return bibtex;
 }
 
-exports.parse = parse;
+exports.bibtexToJson = bibtexToJson;
