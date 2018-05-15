@@ -1,7 +1,8 @@
 let gulp = require('gulp'),
     extReplace = require('gulp-ext-replace'),
     less = require('gulp-less'),
-    clean = require('gulp-clean-css');
+    clean = require('gulp-clean-css')
+    inlineAssets = require('gulp-inline-assets');
 let browserify = require('browserify'),
     glob = require('glob'),
     vinyl = require('vinyl-source-stream'),
@@ -10,17 +11,18 @@ let browserify = require('browserify'),
     uglify = require('gulp-uglify-es').default;
 
 gulp.task('build-css', function () {
-    return gulp.src('./src/bundles/*.decl.less')
+    return gulp.src('./src/bem/bundles/*.decl.less')
         .pipe(less())
         .pipe(extReplace('.css', '.decl.css'))
         .pipe(gulp.dest('./src/bundles'))
+        .pipe(inlineAssets())
         .pipe(clean())
         .pipe(extReplace('.min.css', '.css'))
         .pipe(gulp.dest('./src/bundles'));
 });
 
 gulp.task('build-js', function (done) {
-    glob('./src/bundles/*.decl.js', function (err, files) {
+    glob('./src/bem/bundles/*.decl.js', function (err, files) {
         if (err) {
             done(err);
         }
@@ -40,10 +42,10 @@ gulp.task('build-js', function (done) {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('./src/bundles/*.decl.less', ['build-css']);
-    gulp.watch('./src/blocks/*.less', ['build-css']);
-    gulp.watch('./src/blocks/**/*.less', ['build-css']);
-    gulp.watch('./src/bundles/*.decl.js', ['build-js']);
-    gulp.watch('./src/bundles/*.js', ['build-js']);
-    gulp.watch('./src/bundles/**/*.js', ['build-js']);
+    gulp.watch('./src/bem/bundles/*.decl.less', ['build-css']);
+    gulp.watch('./src/bem/blocks/*.less', ['build-css']);
+    gulp.watch('./src/bem/blocks/**/*.less', ['build-css']);
+    gulp.watch('./src/bem/bundles/*.decl.js', ['build-js']);
+    gulp.watch('./src/bem/bundles/*.js', ['build-js']);
+    gulp.watch('./src/bem/bundles/**/*.js', ['build-js']);
 });

@@ -5,8 +5,8 @@ let mainWindow;
 
 let createWindow = () => {
     mainWindow = new electron.BrowserWindow({
-        width: 320,
-        height: 480
+        width: 800,
+        height: 600
     });
     mainWindow.loadURL(template.renderTemplate(`${__dirname}/views/main.pug`));
     mainWindow.on('closed', function () {

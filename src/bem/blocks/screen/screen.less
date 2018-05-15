@@ -1,0 +1,32 @@
+@import '../../responsive.less';
+.screen {
+    display: grid;
+    box-sizing: border-box;
+    grid-template: 'screen__header screen__header screen__header screen__header'
+                   'screen__search screen__search screen__search screen__search'
+                   'screen__tags screen__tags screen__tags screen__tags'
+                   'screen__results screen__results screen__results screen__results';
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-gap: 16px;
+    padding: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    @media (min-width: @tablet-s) {
+        grid-gap: 24px;
+        padding: 24px;
+        grid-template: 'screen__header screen__header screen__header screen__header screen__header screen__header screen__header screen__header'
+                       'screen__search screen__search screen__search screen__search screen__search screen__search screen__search screen__search'
+                       'screen__results screen__results screen__results screen__results screen__results screen__tags screen__tags screen__tags';
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    }
+    @media (min-width: @tablet-m) {
+        max-width: @tablet-m;
+    }
+    @media (min-width: @tablet-l) {
+        max-width: 1024px;
+        grid-template: 'screen__header screen__header screen__header screen__header screen__header screen__header screen__header screen__header'
+                       'screen__search screen__search screen__results screen__results screen__results screen__results screen__results screen__results'
+                       'screen__tags screen__tags screen__results screen__results screen__results screen__results screen__results screen__results'
+                       '. . screen__results screen__results screen__results screen__results screen__results screen__results';
+    }
+}

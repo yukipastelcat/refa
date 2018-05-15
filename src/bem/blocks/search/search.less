@@ -1,0 +1,40 @@
+@import '../../palette.less';
+.search {
+    & > label {
+        display: flex;
+        background-color: @white;
+        box-shadow: 0px 8px 13.6px 2.4px rgba(0, 0, 0, 0.15);
+        padding: 16px;
+        border-radius: 8px;
+        align-items: center;
+        flex-direction: row-reverse;
+        & > i {
+            color: @platinum;
+        }
+        & > input[type='search'] {
+            margin-left: 16px;
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: none;
+            font-size: 1rem;
+            outline-color: transparent;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            color: @raisin-black;
+            &::-webkit-input-placeholder {
+                color: @platinum;
+            }
+            &::-webkit-search-cancel-button {
+                -webkit-appearance: none;
+                height: 8px;
+                width: 8px;
+                background-color: @vermilion;
+                border-radius: 9999px;
+            }
+            &:focus + i {
+                color: @raisin-black;
+            }
+        }
+    }
+}

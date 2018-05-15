@@ -1,0 +1,9 @@
+@import '../../responsive.less';
+.results {
+    display: grid;
+    grid-template: 1fr;
+    grid-gap: 16px;
+    @media (min-width: @tablet-s) {
+        grid-gap: 24px;
+    }
+}
