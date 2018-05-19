@@ -1,4 +1,32 @@
 extends _layout.pug
 
+append screen
+    .screen__search.search
+        label
+            input(type='search' placeholder='Поиск')
+            i.oi(data-glyph='magnifying-glass')
+    .screen__tags
+        .card
+            h2 Теги
+            label.tag
+                input(type='checkbox')
+                span Tag 1
+            label.tag
+                input(type='checkbox')
+                span Tag 2
+            label.tag
+                input(type='checkbox')
+                span Tag 3
+            label.tag
+                input(type='checkbox')
+                span Dusty Plasma
+    .screen__results.results
+        .card Результат 1
+        .card Результат 2
+        .card Результат 3
+        .card Результат 4
+        .card Результат 5
+        .card Результат 6
+
 append styles
     include ../bundles/main.min.css

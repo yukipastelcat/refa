@@ -1,5 +1,6 @@
 const electron = require('electron');
 const template = require('./template');
+const menu = require('./menu');
 
 let mainWindow;
 
@@ -13,6 +14,10 @@ let createWindow = () => {
         mainWindow = null;
     });
 }
+
+electron.Menu.setApplicationMenu(
+    electron.Menu.buildFromTemplate(menu.template)
+);
 
 electron.app.on('ready', createWindow);
 

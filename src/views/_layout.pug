@@ -9,19 +9,6 @@ html
         .screen
             .screen__header.header
                 .header__logo Logo
-            .screen__search.search
-                label
-                    input(type='search' placeholder='Поиск')
-                    i.oi(data-glyph='magnifying-glass')
-            .screen__tags
-                .card
-                    h2 Теги
-            .screen__results.results
-                .card Результат 1
-                .card Результат 2
-                .card Результат 3
-                .card Результат 4
-                .card Результат 5
-                .card Результат 6
+            block screen
         script
             block scripts

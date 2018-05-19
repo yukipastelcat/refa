@@ -1,0 +1,27 @@
+@import '../../palette.less';
+.tag {
+    & > span {
+        display: inline-block;
+        background-color: @platinum;
+        color: @white;
+        padding: 0 16px;
+        line-height: 32px;
+        align-content: center;
+        border-radius: 9999px;
+        margin: 0 16px 8px 0;
+        &:hover {
+            cursor: pointer;
+        }
+        &::before {
+            content: '#';
+        }
+    }
+    & > input[type='checkbox'] {
+        display: none;
+        &:checked {
+            & + span {
+                background-color: @rich-electric-blue;
+            }
+        }
+    }
+}
