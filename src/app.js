@@ -1,6 +1,11 @@
 const electron = require('electron');
-const template = require('./template');
+const fs = require('fs');
 const menu = require('./menu');
+const appEvents = require('./appEvents');
+const template = require('./template');
+const bibtex = require('./bibtex');
+
+const bibtexViewModel = require('./models/bibtexViewModel');
 
 let mainWindow;
 
@@ -31,4 +36,13 @@ electron.app.on('activate', function () {
     if (mainWindow === null) {
         createWindow();
     }
+});
+
+appEvents.emitter.on('file-open-fileselected', function (filePaths) {
+    fs.readFile(filePaths[0], function (err, blob) {
+        bibtex.bibtexToJson(blob).then(function (json) {
+            console.log(json);
+            bibtexViewModel.json = json;
+        });
+    });
 });

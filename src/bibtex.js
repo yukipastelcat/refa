@@ -1,4 +1,5 @@
-let Cite = require('citation-js');
+const Cite = require('citation-js');
+
 
 async function bibtexToJson (blob) {
     let json;

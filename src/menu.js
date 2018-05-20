@@ -1,5 +1,6 @@
-let { dialog } = require('electron');
-let { configuration } = require('./start');
+const { configuration } = require('./start');
+const { dialog } = require('electron');
+const appEvents = require('./appEvents');
 
 let template = [
     {
@@ -13,10 +14,12 @@ let template = [
                     title: 'Выберите файл',
                     filters: [{
                         name: 'Файлы bibtex',
-                        extensions: ['.bib'],
+                        extensions: ['bib'],
                         properties: ['openFile']
                     }]
-                })
+                }, function (filePaths) {
+                    appEvents.emitter.emit('file-open-fileselected', filePaths);
+                });
             }
         }]
     }
