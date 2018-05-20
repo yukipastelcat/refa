@@ -5,7 +5,7 @@ const appEvents = require('./appEvents');
 const template = require('./template');
 const bibtex = require('./bibtex');
 
-const bibtexViewModel = require('./models/bibtexViewModel');
+const mainViewModel = require('./models/mainViewModel');
 
 let mainWindow;
 
@@ -39,10 +39,9 @@ electron.app.on('activate', function () {
 });
 
 appEvents.emitter.on('file-open-fileselected', function (filePaths) {
-    fs.readFile(filePaths[0], function (err, blob) {
-        bibtex.bibtexToJson(blob).then(function (json) {
-            console.log(json);
-            bibtexViewModel.json = json;
+    fs.readFile(filePaths[0], 'utf-8', function (err, blob) {
+        bibtex.bibtexToJson(blob).then(parsedContents => {
+            mainViewModel.model.publications = parsedContents;
         });
     });
 });
