@@ -1,6 +1,5 @@
 const Cite = require('citation-js');
 
-
 async function bibtexToJson (blob) {
     let json;
     try {

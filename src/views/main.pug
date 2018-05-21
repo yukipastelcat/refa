@@ -1,5 +1,8 @@
 extends _layout.pug
 
+append mixins
+    include Components/_publication.pug
+
 append screen
     .screen__search.search
         label
@@ -21,12 +24,13 @@ append screen
                 input(type='checkbox')
                 span Dusty Plasma
     .screen__results.results
-        .card Результат 1
-        .card Результат 2
-        .card Результат 3
-        .card Результат 4
-        .card Результат 5
-        .card Результат 6
+        if (model.publications.length === 0)
+            h2 Откройте файл чтобы начать
+        else
+            each publication in model.publications
+                +publication(publication)
+
+
 
 append styles
     include ../bundles/main.min.css

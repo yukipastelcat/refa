@@ -1,0 +1,26 @@
+include inputs/_abstract.pug
+include inputs/_author.pug
+include inputs/_journal.pug
+include inputs/_title.pug
+include inputs/_type.pug
+include inputs/_year.pug
+
+mixin publication(publication)
+    .card
+        form
+            fieldset
+                legend Тип публикации и метка
+                +input_type(publication.type)
+                label
+                    span Метка
+                    input(name='label' type='text' value=publication.label)
+            if publication.type === 'article'
+                fieldset
+                    legend Обязательные поля
+                    +input_author(publication.properties.author)
+                    +input_title(publication.properties.title)
+                    +input_journal(publication.properties.journal)
+                    +input_year(publication.properties.year)
+                fieldset
+                    legend Дополнительные поля
+                    +input_abstract(publication.properties.abstract)

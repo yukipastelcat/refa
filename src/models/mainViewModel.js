@@ -1,6 +1,4 @@
-let model = {
-    publications: [],
-    tags: []
-}
+let publications = [];
+let tags = [];
 
-exports.model = model;
+exports.publications = publications;

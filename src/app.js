@@ -1,11 +1,10 @@
-const electron = require('electron');
-const fs = require('fs');
-const menu = require('./menu');
-const appEvents = require('./appEvents');
-const template = require('./template');
-const bibtex = require('./bibtex');
-
-const mainViewModel = require('./models/mainViewModel');
+let electron = require('electron'),
+    fs = require('fs'),
+    menu = require('./menu'),
+    appEvents = require('./appEvents'),
+    template = require('./template'),
+    bibtex = require('./bibtex');
+let mainViewModel = require('./models/mainViewModel');
 
 let mainWindow;
 
@@ -14,7 +13,7 @@ let createWindow = () => {
         width: 800,
         height: 600
     });
-    mainWindow.loadURL(template.renderTemplate(`${__dirname}/views/main.pug`));
+    mainWindow.loadURL(template.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
     mainWindow.on('closed', function () {
         mainWindow = null;
     });
@@ -41,7 +40,9 @@ electron.app.on('activate', function () {
 appEvents.emitter.on('file-open-fileselected', function (filePaths) {
     fs.readFile(filePaths[0], 'utf-8', function (err, blob) {
         bibtex.bibtexToJson(blob).then(parsedContents => {
-            mainViewModel.model.publications = parsedContents;
+            mainViewModel.publications = parsedContents;
+            console.log(mainViewModel.publications);
+            mainWindow.loadURL(template.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
         });
     });
 });
