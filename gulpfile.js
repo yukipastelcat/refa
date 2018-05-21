@@ -8,7 +8,8 @@ let browserify = require('browserify'),
     vinyl = require('vinyl-source-stream'),
     vinylBuffer = require('vinyl-buffer'),
     eventStream = require('event-stream'),
-    uglify = require('gulp-uglify-es').default;
+    uglify = require('gulp-uglify-es').default
+    rename = require('gulp-rename');
 
 gulp.task('build-css', function () {
     return gulp.src('./src/bem/bundles/*.decl.less')
@@ -31,11 +32,12 @@ gulp.task('build-js', function (done) {
                 .bundle()
                 .pipe(vinyl(entry))
                 .pipe(vinylBuffer())
+                .pipe(rename({dirname: ''}))
                 .pipe(extReplace('.js', '.decl.js'))
-                .pipe(gulp.dest('./'))
+                .pipe(gulp.dest('./src/bundles'))
                 .pipe(uglify())
                 .pipe(extReplace('.min.js', '.js'))
-                .pipe(gulp.dest('./'));
+                .pipe(gulp.dest('./src/bundles'));
         });
         eventStream.merge(tasks).on('end', done);
     });
