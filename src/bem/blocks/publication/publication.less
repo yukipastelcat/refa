@@ -1,0 +1,26 @@
+.publication {
+    display: block;
+    & > fieldset {
+        display: block;
+        padding: 0;
+        margin: 0;
+        border: none;
+        & > legend {
+            font-size: 1.728rem;
+            font-weight: 700;
+            padding: 1.414em 0 0.5em;
+            line-height: 1.2;
+        }
+        & > .input {
+            margin-bottom: 16px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        &:first-child {
+            & > legend {
+                padding: 0 0 0.5em;
+            }
+        }
+    }
+}

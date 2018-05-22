@@ -1,5 +1,5 @@
 mixin input_type(type)
-    label
+    label.input.input_select
         span Тип публикации
         select(name='type')
             option(value='article' selected= (type == 'article')) Статья из журнала

@@ -25,8 +25,9 @@
     @media (min-width: @tablet-l) {
         max-width: 1024px;
         grid-template: 'screen__header screen__header screen__header screen__header screen__header screen__header screen__header screen__header'
-                       'screen__search screen__search screen__results screen__results screen__results screen__results screen__results screen__results'
-                       'screen__tags screen__tags screen__results screen__results screen__results screen__results screen__results screen__results'
-                       '. . screen__results screen__results screen__results screen__results screen__results screen__results';
+                       'screen__search screen__search screen__search screen__results screen__results screen__results screen__results screen__results'
+                       'screen__tags screen__tags screen__tags screen__results screen__results screen__results screen__results screen__results'
+                       '. . . screen__results screen__results screen__results screen__results screen__results';
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
     }
 }

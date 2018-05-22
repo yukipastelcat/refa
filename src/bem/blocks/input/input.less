@@ -1,0 +1,29 @@
+@import '../../palette.less';
+.input {
+    display: block;
+    & > span {
+        display: block;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 0 16px;
+        margin-bottom: 8px;
+    }
+    & > input[type='text'], input[type='number'] {
+        display: block;
+        width: 100%;
+        padding: 8px 16px;
+        font-size: 1rem;
+        border: 1px solid @platinum;
+        border-radius: 4px;
+    }
+    & > textarea {
+        display: block;
+        width: 100%;
+        padding: 8px 16px;
+        font-size: 1rem;
+        border: 1px solid @platinum;
+        border-radius: 4px;
+        font-family: 'Open Sans', sans-serif;
+        resize: none;
+    }
+}

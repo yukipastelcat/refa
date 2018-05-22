@@ -1,7 +1,6 @@
 let pug = require('pug');
 
 function renderTemplate(templateUrl, viewModel) {
-    console.log(viewModel);
     let html = pug.renderFile(templateUrl, {
         model: viewModel
     });

@@ -11,6 +11,11 @@ append screen
     .screen__tags
         .card
             h2 Теги
+            if (model.tags)
+                each pubs, tag in model.tags
+                    label.tag
+                        input(type='checkbox' name=tag checked=true)
+                        span #{tag} #{pubs}
             label.tag
                 input(type='checkbox')
                 span Tag 1
@@ -24,7 +29,7 @@ append screen
                 input(type='checkbox')
                 span Dusty Plasma
     .screen__results.results
-        if (model.publications.length === 0)
+        if (!model.publications)
             h2 Откройте файл чтобы начать
         else
             each publication in model.publications

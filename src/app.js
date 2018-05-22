@@ -3,7 +3,8 @@ let electron = require('electron'),
     menu = require('./menu'),
     appEvents = require('./appEvents'),
     template = require('./template'),
-    bibtex = require('./bibtex');
+    bibtex = require('./bibtex'),
+    tagService = require('./services/tagService');
 let mainViewModel = require('./models/mainViewModel');
 
 let mainWindow;
@@ -41,7 +42,7 @@ appEvents.emitter.on('file-open-fileselected', function (filePaths) {
     fs.readFile(filePaths[0], 'utf-8', function (err, blob) {
         bibtex.bibtexToJson(blob).then(parsedContents => {
             mainViewModel.publications = parsedContents;
-            console.log(mainViewModel.publications);
+            mainViewModel.tags = tagService.processTags(mainViewModel.publications);
             mainWindow.loadURL(template.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
         });
     });
