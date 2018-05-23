@@ -43,6 +43,7 @@ appEvents.emitter.on('file-open-fileselected', function (filePaths) {
         bibtex.bibtexToJson(blob).then(parsedContents => {
             mainViewModel.publications = parsedContents;
             mainViewModel.tags = tagService.processTags(mainViewModel.publications);
+            console.log(mainViewModel.publications);
             mainWindow.loadURL(template.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
         });
     });

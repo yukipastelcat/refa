@@ -1,8 +1,28 @@
 include inputs/_abstract.pug
+include inputs/_address.pug
+include inputs/_annote.pug
 include inputs/_author.pug
+include inputs/_booktitle.pug
+include inputs/_chapter.pug
+include inputs/_crossref.pug
+include inputs/_edition.pug
+include inputs/_editor.pug
+include inputs/_eprint.pug
+include inputs/_howpublished.pug
+include inputs/_institution.pug
 include inputs/_journal.pug
+include inputs/_month.pug
+include inputs/_label.pug
+include inputs/_note.pug
+include inputs/_number.pug
+include inputs/_organisation.pug
+include inputs/_pages.pug
+include inputs/_publisher.pug
+include inputs/_school.pug
+include inputs/_series.pug
 include inputs/_title.pug
 include inputs/_type.pug
+include inputs/_volume.pug
 include inputs/_year.pug
 
 mixin publication(publication)
@@ -11,9 +31,7 @@ mixin publication(publication)
             fieldset
                 legend Тип публикации и метка
                 +input_type(publication.type)
-                label
-                    span Метка
-                    input(name='label' type='text' value=publication.label)
+                +input_label(publication.label)
             if publication.type === 'article'
                 fieldset
                     legend Обязательные поля
@@ -23,4 +41,104 @@ mixin publication(publication)
                     +input_year(publication.properties.year)
                 fieldset
                     legend Дополнительные поля
+                    +input_volume(publication.properties.volume)
+                    +input_number(publication.properties.number)
+                    +input_pages(publication.properties.pages)
+                    +input_month(publication.properties.month)
+                    +input_note(publication.properties.note)
                     +input_abstract(publication.properties.abstract)
+            if publication.type === 'book'
+                fieldset
+                    legend Обязательные поля
+                    +input_author(publication.properties.author)
+                    +input_title(publication.properties.title)
+                    +input_publisher(publication.properties.publisher)
+                    +input_year(publication.properties.year)
+                fieldset
+                    legend Дополнительные поля
+                    +input_volume(publication.properties.volume)
+                    +input_series(publication.properties.series)
+                    +input_address(publication.properties.address)
+                    +input_edition(publication.properties.edition)
+                    +input_month(publication.properties.month)
+                    +input_note(publication.properties.note)
+                    +input_pages(publication.properties.pages)
+            if publication.type === 'booklet'
+                fieldset
+                    legend Обязательные поля
+                    +input_title(publication.properties.title)
+                fieldset
+                    legend Дополнительные поля
+                    +input_author(publication.properties.author)
+                    +input_howpublished(publication.properties.howpublished)
+                    +input_address(publication.properties.address)
+                    +input_month(publication.properties.year)
+                    +input_note(publication.properties.note)
+            if publication.type === 'conference'
+                fieldset
+                    legend Обязательные поля
+                    +input_author(publication.properties.author)
+                    +input_title(publication.properties.title)
+                    +input_booktitle(publication.properties.booktitle)
+                    +input_year(publication.properties.year)
+                fieldset
+                    legend Дополнительные поля
+                    +input_editor(publication.properties.editor)
+                    +input_pages(publication.properties.pages)
+                    +input_organisation(publication.properties.organisation)
+                    +input_publisher(publication.properties.publisher)
+                    +input_address(publication.properties.address)
+                    +input_note(publication.properties.month)
+            if publication.type === 'inbook'
+                fieldset
+                    legend Обязательные поля
+                    +input_author(publication.properties.author)
+                    +input_editor(publication.properties.editor)
+                    +input_title(publication.properties.title)
+                    +input_chapter(publication.properties.chapter)
+                    +input_pages(publication.properties.pages)
+                    +input_publisher(publication.properties.publisher)
+                    +input_year(publication.properties.year)
+                fieldset
+                    legend Дополнительные поля
+                    +input_volume(publication.properties.volume)
+                    +input_series(publication.properties.series)
+                    +input_address(publication.properties.address)
+                    +input_edition(publication.properties.edition)
+                    +input_month(publication.properties.month)
+                    +input_note(publication.properties.note)
+            if publication.type === 'incollection'
+                fieldset
+                    legend Обязательные поля
+                    +input_author(publication.properties.author)
+                    +input_title(publication.properties.title)
+                    +input_booktitle(publication.properties.booktitle)
+                    +input_year(publication.properties.year)
+                fieldset
+                    legend Дополнительные поля
+                    +input_editor(publication.properties.editor)
+                    +input_pages(publication.properties.pages)
+                    +input_organisation(publication.properties.organisation)
+                    +input_publisher(publication.properties.publisher)
+                    +input_address(publication.properties.address)
+                    +input_month(publication.properties.month)
+                    +input_note(publication.properties.note)
+            if publication.type === 'inproceedings'
+                fieldset
+                    legend Обязательные поля
+                    +input_author(publication.properties.author)
+                    +input_title(publication.properties.title)
+                    +input_booktitle(publication.properties.booktitle)
+                    +input_year(publication.properties.year)
+                fieldset
+                    legend Дополнительные 
+                    +input_editor(publication.properties.editor)
+                    +input_series(publication.properties.series)
+                    +input_pages(publication.properties.pages)
+                    +input_organisation(publication.properties.organisation)
+                    +input_publisher(publication.properties.publisher)
+                    +input_address(publication.properties.address)
+                    +input_month(publication.properties.month)
+                    +input_note(publication.properties.note)
+                    
+            
