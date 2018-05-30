@@ -6,6 +6,7 @@ function processTags(publications) {
         }
         let publicationKeywords = publication.properties.keywords.split(/,|;/);
         publicationKeywords.forEach(function (keyword) {
+            keyword = keyword.trim();
             if (!keywords[keyword]) {
                 keywords[keyword] = 1;
             }

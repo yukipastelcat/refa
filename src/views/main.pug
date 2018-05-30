@@ -12,10 +12,11 @@ append screen
         .card
             h2 Теги
             if (model.tags)
-                each pubs, tag in model.tags
-                    label.tag(title=tag)
-                        input(type='checkbox' name=tag checked=true)
-                        span #{tag} #{pubs}
+                form
+                    each pubs, tag in model.tags
+                        label.tag(title=tag)
+                            input(type='checkbox' name=tag checked=false value=tag)
+                            span #{tag} #{pubs}
     .screen__results.results
         if (!model.publications)
             h2 Откройте файл чтобы начать
