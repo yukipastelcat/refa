@@ -3,6 +3,8 @@
     display: grid;
     grid-template-areas: 'type author name year' 'details details details details';
     grid-template-columns: 100px 1fr 1fr 60px;
+    padding: 8px 0;
+    border-bottom: 1px solid @platinum;
     & > td {
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -10,7 +12,6 @@
     }
     & > td:last-child {
         grid-area: details;
-        border-bottom: 1px solid @platinum;
         & > details {
             & > summary {
                 display: flex;
@@ -20,9 +21,10 @@
                 cursor: pointer;
                 &::after {
                     display: block;
-                    content: '\e037';
+                    content: '\e034';
+                    font-weight: 300;
                     font-family: 'Icons';
-                    font-size: 0.889rem;
+                    font-size: 0.689rem;
                     margin-left: 8px;
                     transition: all 0.3s linear;
                 }

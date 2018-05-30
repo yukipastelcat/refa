@@ -29,7 +29,7 @@ append screen
                         th Год
                         th
                     each publication in model.publications
-                        tr.entries-table__publication(id = `${publication.label}`)
+                        tr.entries-table__publication(id = `${publication.label}`, data-tags = `${publication.properties.keywords}`)
                             td
                                 span(title=publication.type) #{publication.type}
                             td

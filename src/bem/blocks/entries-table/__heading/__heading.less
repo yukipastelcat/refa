@@ -1,9 +1,12 @@
+@import '../../../palette.less';
 .entries-table__heading {
     display: grid;
     grid-template-areas: 'type author name year';
     grid-template-columns: 100px 1fr 1fr 60px 0;
     & > th {
         cursor: pointer;
+        padding: 8px 0;
+        background-color: @platinum;
         &[data-sortable='ascending'] {
             &::after {
                 content: '\e0bf';
