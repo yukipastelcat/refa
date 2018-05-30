@@ -13,29 +13,40 @@ append screen
             h2 Теги
             if (model.tags)
                 each pubs, tag in model.tags
-                    label.tag
+                    label.tag(title=tag)
                         input(type='checkbox' name=tag checked=true)
                         span #{tag} #{pubs}
-            label.tag
-                input(type='checkbox')
-                span Tag 1
-            label.tag
-                input(type='checkbox')
-                span Tag 2
-            label.tag
-                input(type='checkbox')
-                span Tag 3
-            label.tag
-                input(type='checkbox')
-                span Dusty Plasma
     .screen__results.results
         if (!model.publications)
             h2 Откройте файл чтобы начать
         else
-            each publication in model.publications
-                +publication(publication)
+            .card
+                table.entries-table
+                    tr.entries-table__heading
+                        th Тип
+                        th Автор/Редактор
+                        th Название
+                        th Год
+                        th
+                    each publication in model.publications
+                        tr.entries-table__publication(id = `${publication.label}`)
+                            td
+                                span(title=publication.type) #{publication.type}
+                            td
+                                span(title=publication.author) #{publication.properties.author}
+                            td
+                                span(title=publication.title) #{publication.properties.title}
+                            td
+                                span(title=publication.year) #{publication.properties.year}
+                            td
+                                details
+                                    summary Подробнее
+                                    +publication(publication)
 
 
 
 append styles
     include ../bundles/main.min.css
+
+append scripts
+    include ../bundles/main.js

@@ -27,8 +27,7 @@ include inputs/_volume.pug
 include inputs/_year.pug
 
 mixin publication(publication)
-    .card
-        form.publication
+    form.publication
             fieldset
                 legend Тип публикации и метка
                 +input_pubtype(publication.type)

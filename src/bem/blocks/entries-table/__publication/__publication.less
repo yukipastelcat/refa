@@ -1,0 +1,43 @@
+@import '../../../palette.less';
+.entries-table__publication {
+    display: grid;
+    grid-template-areas: 'type author name year' 'details details details details';
+    grid-template-columns: 100px 1fr 1fr 60px;
+    & > td {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    & > td:last-child {
+        grid-area: details;
+        border-bottom: 1px solid @platinum;
+        & > details {
+            & > summary {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                cursor: pointer;
+                &::after {
+                    display: block;
+                    content: '\e037';
+                    font-family: 'Icons';
+                    font-size: 0.889rem;
+                    margin-left: 8px;
+                    transition: all 0.3s linear;
+                }
+                &::-webkit-details-marker {
+                    display: none;
+                }
+            }
+
+            &[open] {
+                & > summary {
+                    &::after {
+                        transform: rotate3d(0, 0, 1, 180deg);
+                    }
+                }
+            }
+        }
+    }
+}

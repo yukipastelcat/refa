@@ -1,0 +1,24 @@
+.entries-table__heading {
+    display: grid;
+    grid-template-areas: 'type author name year';
+    grid-template-columns: 100px 1fr 1fr 60px 0;
+    & > th {
+        cursor: pointer;
+        &[data-sortable='ascending'] {
+            &::after {
+                content: '\e0bf';
+                font-family: 'Icons';
+                font-size: 0.833rem;
+                margin-left: 8px;
+            }
+        }
+        &[data-sortable='descending'] {
+            &::after {
+                content: '\e0c0';
+                font-family: 'Icons';
+                font-size: 0.833rem;
+                margin-left: 8px;
+            }
+        }
+    }
+}

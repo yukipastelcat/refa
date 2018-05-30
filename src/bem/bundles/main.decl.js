@@ -1,2 +1,3 @@
+let entriesTable = require('../blocks/entries-table/entries-table');
 
-console.log('Test');
+entriesTable.makeSortable();
