@@ -1,10 +1,10 @@
 let search = function (regex) {
     document.querySelectorAll('.entries-table__publication').forEach(publication => {
         if (!regex.test(publication.dataset.tags)) {
-            publication.classList.add('entries-table__publication_hidden');
+            publication.classList.add('entries-table__publication_hidden_search');
         }
         else {
-            publication.classList.remove('entries-table__publication_hidden');
+            publication.classList.remove('entries-table__publication_hidden_search');
         }
     });
     document.querySelectorAll('.tag').forEach(tag => {

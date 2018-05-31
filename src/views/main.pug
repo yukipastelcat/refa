@@ -10,6 +10,9 @@ append screen
             i.oi(data-glyph='magnifying-glass')
     .screen__tags
         .card
+            label.tag-checker
+                input(type='checkbox' checked=true)
+                span
             h2 Теги
             if (model.tags)
                 form

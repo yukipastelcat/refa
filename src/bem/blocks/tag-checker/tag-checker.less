@@ -1,0 +1,23 @@
+.tag-checker {
+    display: block;
+    cursor: pointer;
+    & > input[type='checkbox'] {
+        display: none;
+        & + span {
+            &::before {
+                content: '\e073';
+                font-family: 'Icons';
+                font-weight: 300;
+            }
+        }
+        &:checked {
+            & + span {
+                &::before {
+                    content: '\e017';
+                    font-family: 'Icons';
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+}
