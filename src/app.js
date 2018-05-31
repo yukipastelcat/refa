@@ -1,9 +1,9 @@
 let electron = require('electron'),
     fs = require('fs'),
-    menu = require('./menu'),
-    appEvents = require('./appEvents'),
+    menuService = require('./services/menuService'),
+    eventsService = require('./services/eventsService'),
     template = require('./template'),
-    bibtex = require('./bibtex'),
+    bibtexService = require('./services/bibtexService'),
     tagService = require('./services/tagService');
 let mainViewModel = require('./models/mainViewModel');
 
@@ -21,7 +21,7 @@ let createWindow = () => {
 }
 
 electron.Menu.setApplicationMenu(
-    electron.Menu.buildFromTemplate(menu.template)
+    electron.Menu.buildFromTemplate(menuService.template)
 );
 
 electron.app.on('ready', createWindow);
@@ -38,9 +38,9 @@ electron.app.on('activate', function () {
     }
 });
 
-appEvents.emitter.on('file-open-fileselected', function (filePaths) {
+eventsService.emitter.on('file-open-fileselected', function (filePaths) {
     fs.readFile(filePaths[0], 'utf-8', function (err, blob) {
-        bibtex.bibtexToJson(blob).then(parsedContents => {
+        bibtexService.bibtexToJson(blob).then(parsedContents => {
             mainViewModel.publications = parsedContents;
             mainViewModel.tags = tagService.processTags(mainViewModel.publications);
             console.log(mainViewModel.publications);

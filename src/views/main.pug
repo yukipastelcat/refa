@@ -15,7 +15,7 @@ append screen
                 form
                     each pubs, tag in model.tags
                         label.tag(title=tag)
-                            input(type='checkbox' name=tag checked=false value=tag)
+                            input(type='checkbox' name=tag checked=true value=tag)
                             span #{tag} #{pubs}
     .screen__results.results
         if (!model.publications)

@@ -1,6 +1,6 @@
-const { configuration } = require('./start');
+const { configuration } = require('./startService');
 const { dialog } = require('electron');
-const appEvents = require('./appEvents');
+const eventsService = require('./eventsService');
 
 let template = [
     {
@@ -18,7 +18,7 @@ let template = [
                         properties: ['openFile']
                     }]
                 }, function (filePaths) {
-                    appEvents.emitter.emit('file-open-fileselected', filePaths);
+                    eventsService.emitter.emit('file-open-fileselected', filePaths);
                 });
             }
         }]

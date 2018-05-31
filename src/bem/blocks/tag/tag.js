@@ -7,7 +7,6 @@ let tagSearchable = () => {
             });
             regexString = regexString.substring(0, regexString.length - 1);
             let regex = new RegExp(regexString, 'g');
-            console.log(regex);
             document.querySelectorAll('.entries-table__publication').forEach(publication => {
                 if (!regex.test(publication.dataset.tags)) {
                     publication.classList.add('entries-table__publication_hidden');
