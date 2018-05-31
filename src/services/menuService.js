@@ -18,6 +18,9 @@ let template = [
                         properties: ['openFile']
                     }]
                 }, function (filePaths) {
+                    if (!filePaths) {
+                        return;
+                    }
                     eventsService.emitter.emit('file-open-fileselected', filePaths);
                 });
             }
