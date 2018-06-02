@@ -2,7 +2,7 @@ let electron = require('electron'),
     fs = require('fs'),
     menuService = require('./services/menuService'),
     eventsService = require('./services/eventsService'),
-    template = require('./template'),
+    templateService = require('./services/templateService'),
     bibtexService = require('./services/bibtexService'),
     tagService = require('./services/tagService');
 let mainViewModel = require('./models/mainViewModel');
@@ -14,7 +14,7 @@ let createWindow = () => {
         width: 800,
         height: 600
     });
-    mainWindow.loadURL(template.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
+    mainWindow.loadURL(templateService.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
     mainWindow.on('closed', function () {
         mainWindow = null;
     });
@@ -39,12 +39,10 @@ electron.app.on('activate', function () {
 });
 
 eventsService.emitter.on('file-open-fileselected', function (filePaths) {
-    fs.readFile(filePaths[0], 'utf-8', function (err, blob) {
-        bibtexService.bibtexToJson(blob).then(parsedContents => {
-            mainViewModel.publications = parsedContents;
-            mainViewModel.tags = tagService.processTags(mainViewModel.publications);
-            console.log(mainViewModel.publications);
-            mainWindow.loadURL(template.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
-        });
+    let blob = fs.readFileSync(filePaths[0]);
+    bibtexService.bibtexToJson(blob).then(parsedContents => {
+        mainViewModel.publications = parsedContents;
+        mainViewModel.tags = tagService.processTags(mainViewModel.publications);
+        mainWindow.loadURL(templateService.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
     });
 });

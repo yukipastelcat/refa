@@ -21,7 +21,7 @@ let initOmnibox = function () {
     document.querySelector(`.search input[type='search']`).addEventListener('input', function () {
         let regex = new RegExp(this.value.replace(/ /g, '|'), 'i');
         search(regex);
-    });
+    }, { passive: true });
 }
 
 exports.initOmnibox = initOmnibox;
