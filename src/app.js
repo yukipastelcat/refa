@@ -4,7 +4,8 @@ let electron = require('electron'),
     eventsService = require('./services/eventsService'),
     templateService = require('./services/templateService'),
     bibtexService = require('./services/bibtexService'),
-    tagService = require('./services/tagService');
+    tagService = require('./services/tagService')
+    synonymsService = require('./services/synonymsService');
 let mainViewModel = require('./models/mainViewModel');
 
 let mainWindow;
@@ -43,6 +44,7 @@ eventsService.emitter.on('file-open-fileselected', function (filePaths) {
     bibtexService.bibtexToJson(blob).then(parsedContents => {
         mainViewModel.publications = parsedContents;
         mainViewModel.tags = tagService.processTags(mainViewModel.publications);
+        mainViewModel.synonyms = synonymsService.getSynonyms();
         mainWindow.loadURL(templateService.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
     });
 });

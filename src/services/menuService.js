@@ -4,10 +4,10 @@ const eventsService = require('./eventsService');
 
 let template = [
     {
-        label: 'File',
+        label: 'Файл',
         enabled: true,
         submenu: [{
-            label: 'Open',
+            label: 'Открыть',
             accelerator: 'CmdOrCtrl+O',
             click: function () {
                 dialog.showOpenDialog({
@@ -30,9 +30,9 @@ let template = [
 
 if (configuration.isDebug) {
     template.push({
-        label: 'Developer Tools',
+        label: 'Для разработчиков',
         submenu: [{
-            label: 'Toggle Developer Tools',
+            label: 'Открыть инструменты разработчика',
             accelerator: 'CmdOrCtrl+Shift+I',
             role: 'toggleDevTools'
         }]

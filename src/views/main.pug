@@ -10,9 +10,10 @@ append screen
             i.oi(data-glyph='magnifying-glass')
     .screen__tags
         .card
-            label.tag-checker
-                input(type='checkbox' checked=true)
-                span
+            if (model.tags)
+                label.tag-checker
+                    input(type='checkbox' checked=true)
+                    span
             h2 Теги
             if (model.tags)
                 form
@@ -46,9 +47,7 @@ append screen
                                 details
                                     summary Подробнее
                                     +publication(publication)
-
-
-
+    input(type='hidden' name='synonyms' value=model.synonyms)
 append styles
     include ../bundles/main.min.css
 
