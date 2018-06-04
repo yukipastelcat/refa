@@ -1,7 +1,7 @@
 const Cite = require('citation-js');
 
 async function bibtexToJson (blob) {
-    let fileString = blob.toString();
+    let fileString = blob.toString().replace(/^%.*/gm, '');
     let json;
     try {
         json = await Cite.parse.bibtex.text(fileString);
