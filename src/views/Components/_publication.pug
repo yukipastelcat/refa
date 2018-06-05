@@ -199,11 +199,16 @@ mixin publication(publication)
                     +input_note(publication.properties.note)
             if publication.type === 'unpublished'
                 fieldset
-                    label Обязательные поля
+                    legend Обязательные поля
                     +input_author(publication.properties.author)
                     +input_title(publication.properties.title)
                     +input_note(publication.properties.note)
                 fieldset
-                    label Дополнительные поля
+                    legend Дополнительные поля
                     +input_month(publication.properties.month)
+                    +input_year(publication.properties.year)
+            if publication.type === 'standard'
+                fieldset
+                    legend Дополнительные поля
+                    +input_title(publication.properties.title)
                     +input_year(publication.properties.year)
