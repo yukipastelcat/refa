@@ -5,7 +5,7 @@
     "main": "src/app.js",
     "scripts": {
         "start": "electron .",
-        "test": "mocha tests/bibtex.js tests/start.js tests/tag.js"
+        "test": "./node_modules/.bin/mocha tests/bibtex.js tests/start.js tests/tag.js"
     },
     "repository": {
         "type": "git",
