@@ -48,7 +48,11 @@ append screen
                                     summary Подробнее
                                     +publication(publication)
     script.
-        window.model = !{jsonModel}
+        const {ipcRenderer} = require('electron');
+        ipcRenderer.send('request-view-model');
+        ipcRenderer.on('view-model-response', function (e, data) {
+            window.model = data;
+        });
 append styles
     include ../bundles/main.min.css
 

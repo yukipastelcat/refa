@@ -1,4 +1,5 @@
-let synonyms = window.model.synonyms;
+window.model = {};
+window.model.synonyms = [];
 let search = function (regex) {
     document.querySelectorAll('.entries-table__publication').forEach(publication => {
         if (!regex.test(publication.dataset.tags)) {
@@ -21,7 +22,7 @@ let search = function (regex) {
 let findSynonym = function (regex) {
     let BreakException = {};
     let synonymRegex;
-    synonyms.forEach(synonym => {
+    window.model.synonyms.forEach(synonym => {
         try {
             if (regex.test(synonym)) {
                 synonymRegex = new RegExp(synonym, 'i');
