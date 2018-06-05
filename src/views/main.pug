@@ -47,7 +47,8 @@ append screen
                                 details
                                     summary Подробнее
                                     +publication(publication)
-    input(type='hidden' name='synonyms' value=model.synonyms)
+    script.
+        window.model = !{jsonModel}
 append styles
     include ../bundles/main.min.css
 

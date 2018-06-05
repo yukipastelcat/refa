@@ -1,6 +1,5 @@
-let synonyms = JSON.parse(document.querySelector(`input[name='synonyms']`).value || '[]');
+let synonyms = window.model.synonyms;
 let search = function (regex) {
-    console.log(regex);
     document.querySelectorAll('.entries-table__publication').forEach(publication => {
         if (!regex.test(publication.dataset.tags)) {
             publication.classList.add('entries-table__publication_hidden_search');
@@ -33,14 +32,23 @@ let findSynonym = function (regex) {
             if (err !== BreakException) throw err;
         }
     });
-    return synonymRegex;
+    return synonymRegex || '';
 }
 
 let initOmnibox = function () {
     document.querySelector(`.search input[type='search']`).addEventListener('input', function () {
+        if (!this.value) {
+            search(/(?:)/i);
+            return;
+        }
         let regex = new RegExp(this.value.replace(/ /g, '|'), 'i');
         let synonyms = findSynonym(regex);
-        search(synonyms);
+            if (synonyms) {
+                search(synonyms);
+            }
+            else {
+                search(regex);
+            }
     }, { passive: true });
 }
 
