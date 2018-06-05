@@ -47,7 +47,6 @@ eventsService.emitter.on('file-open-fileselected', function (filePaths) {
         mainViewModel.synonyms = startService.synonyms;
         mainWindow.loadURL(templateService.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
         electron.ipcMain.once('request-view-model', function () {
-            console.log('Got request');
             mainWindow.webContents.send('view-model-response', mainViewModel);
         });
     });

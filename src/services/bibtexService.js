@@ -1,5 +1,4 @@
 const Cite = require('citation-js');
-
 async function bibtexToJson (blob) {
     let fileString = blob.toString().replace(/^%.*/gm, '');
     let json;
@@ -13,8 +12,9 @@ async function bibtexToJson (blob) {
 }
 
 function jsonToBibtex (json) {
-    let bibtex;
+    let bibtex = new Cite(json).get({type: 'string', style: 'bibtex'});
     return bibtex;
 }
 
 exports.bibtexToJson = bibtexToJson;
+exports.jsonToBibtex = jsonToBibtex;
