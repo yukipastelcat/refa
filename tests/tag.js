@@ -7,11 +7,16 @@ let tagService = require('../src/services/tagService');
 describe('tagService', function () {
     let refs = bibtexService.bibtexToJson(fs.readFileSync('tests/bibtex/references.bib'));
     let tags = tagService.processTags(refs);
-    it('Returns an object', function () {
-        chai.expect(tags).to.be.an('object');
-    });
-    it('Has a count property for each tag, showing how many publications on this tag', function () {
+    it(`Correctly parses list of tags and counts publications for each tag`, function () {
+        let checkKeywords = {};
+        for (publicationId in refs)
+            refs[publicationId].fields.keywords.forEach(keyword => {
+                if (checkKeywords[keyword])
+                    checkKeywords[keyword] += 1;
+                else
+                    checkKeywords[keyword] = 1;
+            });
         for (tag in tags)
-            tags[tag].should.be.a('number');
+            tags[tag].should.be.equal(checkKeywords[tag]);
     });
 })
