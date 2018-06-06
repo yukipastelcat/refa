@@ -1,4 +1,7 @@
-mixin input_journal(journal)
+mixin input_journal(journals)
     label.input
         span Название журнала
-        input(name='journal' type='text' value=journal)
+        - var journalString = ''
+        each journal in journals
+            - journalString += journal.text
+        input(name='journal' type='text' value=journalString)

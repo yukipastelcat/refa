@@ -1,4 +1,12 @@
-mixin input_volume(volume)
+mixin input_volume(volumes)
     label.input
         span Том
-        input(name='volume' type='number' min='1' value=volume)
+        - var volumeString = ''
+        - var volumeCount = 0
+        if (volumes)
+            each volume in volumes
+                - volumeCount++
+                - volumeString += volume.text
+                if (volumeCount < volumes.length)
+                    - volumeString += ', '
+        input(name='volume' type='number' min='1' value=volumeString)

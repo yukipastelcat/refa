@@ -1,6 +1,7 @@
 extends _layout.pug
 
 append mixins
+    include Components/_entry.pug
     include Components/_publication.pug
 
 append screen
@@ -34,19 +35,7 @@ append screen
                         th Год
                         th
                     each publication in model.publications
-                        tr.entries-table__publication(id = `${publication.label}`, data-tags = `${publication.properties.keywords}`)
-                            td
-                                span(title=publication.type) #{publication.type}
-                            td
-                                span(title=publication.author) #{publication.properties.author}
-                            td
-                                span(title=publication.title) #{publication.properties.title}
-                            td
-                                span(title=publication.year) #{publication.properties.year}
-                            td
-                                details
-                                    summary Подробнее
-                                    +publication(publication)
+                        +entry(publication)
     script.
         const {ipcRenderer} = require('electron');
         ipcRenderer.send('request-view-model');

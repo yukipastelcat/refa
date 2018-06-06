@@ -1,13 +1,9 @@
-const Cite = require('citation-js');
-async function bibtexToJson (blob) {
-    let fileString = blob.toString().replace(/^%.*/gm, '');
+const converter = require('biblatex-csl-converter');
+function bibtexToJson (blob) {
+    let fileString = blob.toString();
     let json;
-    try {
-        json = await Cite.parse.bibtex.text(fileString);
-    }
-    catch (err) {
-        throw err;
-    }
+    let parser = new converter.BibLatexParser(fileString, { processUnexpected: true });
+    json = parser.output;
     return json;
 }
 

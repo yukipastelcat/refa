@@ -1,4 +1,12 @@
-mixin input_number(number)
+mixin input_number(numbers)
     label.input
         span Номер журнала
-        input(name='number' type='number' min='1' value=number)
+        - var numberString = ''
+        - var numberCount = 0
+        if (numbers)
+            each number in numbers
+                - numberCount++
+                - numberString += number.text
+                if (numberCount < numbers.length)
+                    - numberString += ', '
+        input(name='number' type='number' min='1' value=numberString)

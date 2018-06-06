@@ -1,0 +1,30 @@
+mixin entry(publication)
+    tr.entries-table__publication(id = `${publication}`, data-tags = `${publication.fields.keywords}`)
+        td
+            span(title=publication.bib_type) #{publication.bib_type}
+        td
+            - var authorString = ''
+            - var authorCount = 0
+            if (publication.fields.author)
+                each author in publication.fields.author
+                    - authorCount++
+                    each family in author.family
+                        - authorString += family.text
+                    - authorString += ' '
+                    each given in author.given
+                        - authorString += given.text
+                    if (authorCount < publication.fields.author.length)
+                        - authorString += ' and '
+                span(title=authorString)= authorString
+        td
+            - var titleString = ''
+            if (publication.fields.title)
+                each title in publication.fields.title
+                    - titleString += title.text
+                span(title=titleString)= titleString
+        td
+            span(title=`${publication.fields.date}`) #{publication.fields.date}
+        td
+            details
+                summary Подробнее
+                +publication(publication)

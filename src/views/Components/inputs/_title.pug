@@ -1,4 +1,8 @@
-mixin input_title(title)
+mixin input_title(titles)
     label.input
         span Название работы
-        input(name='title' type='text' value=title)
+        - var titleString = ''
+        each title in titles
+            - titleString += title.text
+        - titleString += ' '
+        input(name='title' type='text' value=titleString)

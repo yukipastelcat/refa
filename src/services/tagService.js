@@ -1,20 +1,15 @@
-function processTags(publications) {
+let processTags = function (publications) {
     let keywords = {};
-    publications.forEach(function (publication) {
-        if (!publication.properties.keywords) {
-            return;
+    for (number in publications) {
+        if (publications[number].fields.keywords) {
+            publications[number].fields.keywords.forEach(keyword => {
+                if (!keywords[keyword])
+                    keywords[keyword] = 1;
+                else
+                    keywords[keyword] += 1;
+            });
         }
-        let publicationKeywords = publication.properties.keywords.split(/,|;/);
-        publicationKeywords.forEach(function (keyword) {
-            keyword = keyword.trim();
-            if (!keywords[keyword]) {
-                keywords[keyword] = 1;
-            }
-            else {
-                keywords[keyword] += 1;
-            }
-        });
-    });
+    }
     return keywords;
 }
 
