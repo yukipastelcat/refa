@@ -1,9 +1,9 @@
-mixin input_organisation(organisations)
+mixin input_organisation(organizations)
     label.input
         span Организатор конференции
-        - var organisationString = ''
-        if (organisations)
-            each organisationGroup in organisations
-                each organisation in organisationGroup
-                    - organisationString += organisation.text
-        input(name='organisation' type='text' value=organisationString)
+        - var organizationString = ''
+        if (organizations)
+            each organizationGroup in organizations
+                each organization in organizationGroup
+                    - organizationString += organization.text
+        input(name='organisation' type='text' value=organizationString)
