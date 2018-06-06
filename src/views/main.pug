@@ -42,6 +42,12 @@ append screen
         ipcRenderer.on('view-model-response', function (e, data) {
             window.model = data;
         });
+        let openFile = function (path) {
+            ipcRenderer.send('open-file', path);
+        }
+        let openFolder = function (path) {
+            ipcRenderer.send('open-folder', path);
+        }
 append styles
     include ../bundles/main.min.css
 

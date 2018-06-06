@@ -1,0 +1,11 @@
+mixin input_file(path)
+    label.input.input_file
+        span Файл
+        div
+            button.button(onclick=`openFile('${path}'); return false;`) 
+                i.oi(data-glyph='file')
+                span Открыть файл
+        div
+            button.button(onclick=`openFolder('${path}'); return false;`)
+                i.oi(data-glyph='folder')
+                span Открыть папку

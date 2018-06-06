@@ -8,11 +8,16 @@ mixin entry(publication, id)
             if (publication.fields.author)
                 each author in publication.fields.author
                     - authorCount++
-                    each family in author.family
-                        - authorString += family.text
+                    if (author.literal)
+                        each literal in author.literal
+                            - authorString += literal.text
+                    if (author.family)
+                        each family in author.family
+                            - authorString += family.text
                     - authorString += ' '
-                    each given in author.given
-                        - authorString += given.text
+                    if (author.given)
+                        each given in author.given
+                            - authorString += given.text
                     if (authorCount < publication.fields.author.length)
                         - authorString += ' and '
                 span(title=authorString)= authorString

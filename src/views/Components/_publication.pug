@@ -25,6 +25,7 @@ include inputs/_title.pug
 include inputs/_type.pug
 include inputs/_volume.pug
 include inputs/_year.pug
+include inputs/_file.pug
 
 mixin publication(publication)
     form.publication
@@ -242,3 +243,5 @@ mixin publication(publication)
                                 +input_type(value)
                             when 'volume'
                                 +input_volume(value)
+                            when 'file'
+                                +input_file(value)

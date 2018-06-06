@@ -1,5 +1,6 @@
 let electron = require('electron'),
     fs = require('fs'),
+    path = require('path'),
     menuService = require('./services/menuService'),
     eventsService = require('./services/eventsService'),
     templateService = require('./services/templateService'),
@@ -9,6 +10,7 @@ let electron = require('electron'),
 let mainViewModel = require('./models/mainViewModel');
 
 let mainWindow;
+let bibtexDir;
 
 let createWindow = () => {
     mainWindow = new electron.BrowserWindow({
@@ -41,6 +43,7 @@ electron.app.on('activate', function () {
 
 eventsService.emitter.on('file-open-fileselected', function (filePaths) {
     let blob = fs.readFileSync(filePaths[0]);
+    bibtexDir = path.dirname(filePaths[0]);
     mainViewModel.publications = bibtexService.bibtexToJson(blob);
     mainViewModel.tags = tagService.processTags(mainViewModel.publications);
     mainViewModel.synonyms = startService.synonyms;
@@ -48,4 +51,18 @@ eventsService.emitter.on('file-open-fileselected', function (filePaths) {
     electron.ipcMain.once('request-view-model', function () {
         mainWindow.webContents.send('view-model-response', mainViewModel);
     });
+});
+
+electron.ipcMain.on('open-file', function (e, file) {
+    let filename = /:([^:]+):/g.exec(file)[1];
+    if (filename[0] === '.')
+        filename = `${bibtexDir}/${filename}`;
+    electron.shell.openItem(filename);
+});
+
+electron.ipcMain.on('open-folder', function (e, file) {
+    let filename = /:([^:]+):/g.exec(file)[1];
+    if (filename[0] === '.')
+        filename = `${bibtexDir}/${filename}`;
+    electron.shell.showItemInFolder(filename);
 });

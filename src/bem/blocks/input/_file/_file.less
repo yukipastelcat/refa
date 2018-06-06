@@ -1,0 +1,11 @@
+.input_file {
+    display: grid;
+    grid-template: 'label label' 'button1 button2';
+    & > span {
+        grid-area: label;
+    }
+    & > div {
+        align-self: center;
+        justify-self: center;
+    }
+}
