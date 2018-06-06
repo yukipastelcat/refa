@@ -64,17 +64,17 @@ mixin publication(publication)
                     +input_note(publication.fields.note)
                     +input_pages(publication.fields.pages)
                     +input_abstract(publication.fields.abstract)
-            if publication.type === 'booklet'
+            if publication.bib_type === 'booklet'
                 fieldset
                     legend Обязательные поля
-                    +input_title(publication.properties.title)
+                    +input_title(publication.fields.title)
                 fieldset
                     legend Дополнительные поля
-                    +input_author(publication.properties.author)
-                    +input_howpublished(publication.properties.howpublished)
-                    +input_address(publication.properties.address)
-                    +input_month(publication.properties.year)
-                    +input_note(publication.properties.note)
+                    +input_author(publication.fields.author)
+                    +input_howpublished(publication.fields.howpublished)
+                    +input_address(publication.fields.location)
+                    +input_month(publication.fields.date)
+                    +input_note(publication.fields.note)
             if publication.type === 'conference'
                 fieldset
                     legend Обязательные поля

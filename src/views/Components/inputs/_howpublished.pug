@@ -1,4 +1,8 @@
-mixin input_howpublished(howpublished)
+mixin input_howpublished(howpublishedlist)
     label.input
         span Способ публикации
-        input(name='howpublished' type='text' value=howpublished)
+        - var howpublishedString = ''
+        if (howpublishedlist)
+            each howpublished in howpublishedlist
+                - howpublishedString += howpublished.text
+        input(name='howpublished' type='text' value=howpublishedString)
