@@ -1,4 +1,17 @@
-mixin input_publisher(publisher)
+mixin input_publisher(publishers)
     label.input
         span Издатель
-        input(name='publisher' type='text' value=publisher)
+        if (publishers)
+            - var publisherString = ''
+            - var publishersGroupCount = 0
+            each publishersGroup in publishers
+                - publishersGroupCount++
+                - var publisherCount = 0
+                each publisher in publishersGroup
+                    - publisherCount++
+                    - publisherString += publisher.text
+                    if (publisherCount < publishersGroup.length)
+                        - publisherString += ' and '
+                if (publishersGroupCount < publishers.length)
+                    - publisherString += ' and '
+        input(name='publisher' type='text' value=publisherString)

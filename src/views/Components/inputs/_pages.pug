@@ -1,17 +1,18 @@
 mixin input_pages(pages)
     label.input
         span Номера страниц
-        - var pagesString = ''
-        - var pagesGroupCount = 0
-        each pagesGroup in pages
-            - pagesGroupCount++
-            - var pagesCount = 0
-            each page in pagesGroup
-                - pagesCount++
-                - pagesString += page[0].text
-                if (pagesCount < pagesGroup.length)
-                    - pagesString += '--'
-            if (pagesGroupCount < pages.length)
-                - pagesString += ', '
+        if (pages)
+            - var pagesString = ''
+            - var pagesGroupCount = 0
+            each pagesGroup in pages
+                - pagesGroupCount++
+                - var pagesCount = 0
+                each page in pagesGroup
+                    - pagesCount++
+                    - pagesString += page[0].text
+                    if (pagesCount < pagesGroup.length)
+                        - pagesString += '--'
+                if (pagesGroupCount < pages.length)
+                    - pagesString += ', '
 
         input(name='pages' type='text' value=pagesString)

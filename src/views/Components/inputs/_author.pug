@@ -1,15 +1,16 @@
 mixin input_author(authors)
     label.input
         span Автор(ы)
-        - var authorString = ''
-        - var authorCount = 0
-        each author in authors
-            - authorCount++
-            each family in author.family
-                - authorString += family.text
-            - authorString += ' '
-            each given in author.given
-                - authorString += given.text
-            if (authorCount < authors.length)
-                - authorString += ' and '
+        if (authors)
+            - var authorString = ''
+            - var authorCount = 0
+            each author in authors
+                - authorCount++
+                each family in author.family
+                    - authorString += family.text
+                - authorString += ' '
+                each given in author.given
+                    - authorString += given.text
+                if (authorCount < authors.length)
+                    - authorString += ' and '
         input(name='author' type='text' value=authorString)

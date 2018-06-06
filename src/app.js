@@ -44,7 +44,6 @@ eventsService.emitter.on('file-open-fileselected', function (filePaths) {
     mainViewModel.publications = bibtexService.bibtexToJson(blob);
     mainViewModel.tags = tagService.processTags(mainViewModel.publications);
     mainViewModel.synonyms = startService.synonyms;
-    console.log(mainViewModel.publications['1'].fields.author[0]);
     mainWindow.loadURL(templateService.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
     electron.ipcMain.once('request-view-model', function () {
         mainWindow.webContents.send('view-model-response', mainViewModel);

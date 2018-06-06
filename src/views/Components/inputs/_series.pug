@@ -1,4 +1,8 @@
 mixin input_series(series)
     label.input
         span Серия, в которой вышла книга
-        input(name='series' type='text' value=series)
+        - var seriesString = ''
+        if (series)
+            each serie in series
+                - seriesString += serie.text
+        input(name='series' type='text' value=seriesString)

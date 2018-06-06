@@ -1,4 +1,16 @@
-mixin input_editor(editor)
+mixin input_editor(editors)
     label.input
         span Редактор(ы)
-        input(name='editor' type='text' value=editor)
+        if (editors)
+            - var editorString = ''
+            - var editorCount = 0
+            each editor in editors
+                - editorCount++
+                each family in editor.family
+                    - editorString += family.text
+                - editorString += ' '
+                each given in editor.given
+                    - editorString += given.text
+                if (editorCount < editors.length)
+                    - editorString += ' and '
+        input(name='editor' type='text' value=editorString)

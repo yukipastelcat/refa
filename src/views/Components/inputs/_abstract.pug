@@ -1,4 +1,8 @@
-mixin input_abstract(abstract)
+mixin input_abstract(abstracts)
     label.input
         span Аннотация
-        textarea(name='abstract' cols='80' rows='5') #{abstract}
+        if (abstracts)
+            - var abstractString = ''
+            each abstract in abstracts
+                - abstractString += abstract.text
+        textarea(name='abstract' cols='80' rows='5')= abstractString

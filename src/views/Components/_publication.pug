@@ -44,24 +44,25 @@ mixin publication(publication)
                     +input_volume(publication.fields.volume)
                     +input_number(publication.fields.number)
                     +input_pages(publication.fields.pages)
-                    +input_note('test')
-                    +input_abstract('test')
-            if publication.type === 'book'
+                    +input_note(publication.fields.note)
+                    +input_abstract(publication.fields.abstract)
+            if publication.bib_type === 'book'
                 fieldset
                     legend Обязательные поля
-                    +input_author(publication.properties.author)
-                    +input_title(publication.properties.title)
-                    +input_publisher(publication.properties.publisher)
-                    +input_year(publication.properties.year)
+                    +input_author(publication.fields.author)
+                    +input_editor(publication.fields.editor)
+                    +input_title(publication.fields.title)
+                    +input_publisher(publication.fields.publisher)
+                    +input_year(publication.fields.date)
                 fieldset
                     legend Дополнительные поля
-                    +input_volume(publication.properties.volume)
-                    +input_series(publication.properties.series)
-                    +input_address(publication.properties.address)
-                    +input_edition(publication.properties.edition)
-                    +input_month(publication.properties.month)
-                    +input_note(publication.properties.note)
-                    +input_pages(publication.properties.pages)
+                    +input_volume(publication.fields.volume)
+                    +input_series(publication.fields.series)
+                    +input_address(publication.fields.address)
+                    +input_edition(publication.fields.edition)
+                    +input_month(publication.fields.month)
+                    +input_note(publication.fields.note)
+                    +input_pages(publication.fields.pages)
             if publication.type === 'booklet'
                 fieldset
                     legend Обязательные поля
