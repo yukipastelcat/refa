@@ -58,11 +58,12 @@ mixin publication(publication)
                     legend Дополнительные поля
                     +input_volume(publication.fields.volume)
                     +input_series(publication.fields.series)
-                    +input_address(publication.fields.address)
+                    +input_address(publication.fields.location)
                     +input_edition(publication.fields.edition)
-                    +input_month(publication.fields.month)
+                    +input_month(publication.fields.date)
                     +input_note(publication.fields.note)
                     +input_pages(publication.fields.pages)
+                    +input_abstract(publication.fields.abstract)
             if publication.type === 'booklet'
                 fieldset
                     legend Обязательные поля

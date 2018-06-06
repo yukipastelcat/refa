@@ -1,8 +1,8 @@
 mixin input_note(notes)
     label.input
         span Заметки
-        if (note)
-            - var noteString = ''
+        - var noteString = ''
+        if (notes)
             each note in notes
                 - noteString += note.text
         textarea(name='note')= noteString

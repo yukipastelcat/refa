@@ -1,4 +1,9 @@
-mixin input_address(address)
+mixin input_address(addresses)
     label.input
         span Адрес
-        input(name='address' type='text' value=address)
+        - var addressString = ''
+        if (addresses)
+            each addressGroup in addresses
+                each address in addressGroup
+                    - addressString += address.text
+        input(name='address' type='text' value=addressString)
