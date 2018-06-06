@@ -1,4 +1,9 @@
-mixin input_institution(institution)
+mixin input_institution(institutions)
     label.input
         span Институт, вовлеченный в публикацию
-        input(name='institution' type='text' value=institution)
+        - var institutionsString = ''
+        if (institutions)
+            each institutionGroup in institutions
+                each institution in institutionGroup
+                    - institutionsString += institution.text
+        input(name='institution' type='text' value=institutionsString)
