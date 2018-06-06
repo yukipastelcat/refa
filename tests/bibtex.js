@@ -1,21 +1,22 @@
 let chai = require('chai');
+let should = chai.should();
 let fs = require('fs');
 let bibtexService = require('../src/services/bibtexService');
 
 describe('bibtexService', function () {
-    describe('Convert BibTeX file to JS object', function () {
-        let refs = fs.readFileSync('tests/bibtex/refs.bib');
-        it('Returns an object', function () {
-            bibtexService.bibtexToJson(refs).then(parsedContents => {
-                chai.expect(typeof(parsedContents)).to.equal('object');
-            });
+    let references = fs.readFileSync('tests/bibtex/references.bib');
+    describe('Converts BibTeX entries to JavaScript object', function () {
+        let object = bibtexService.bibtexToJson(references);
+        it(`Returned object is not empty`, function () {
+            chai.expect(object).not.to.be.empty;
         });
-        it('Correctly parses bibtex', function () {
-            bibtexService.bibtexToJson(refs).then(parsedContents => {
-                chai.expect(parsedContents[0]).to.have.property('type');
-                chai.expect(parsedContents[0]).to.have.property('label');
-                chai.expect(parsedContents[0]).to.have.property('properties');
-            });
+        it(`Each publication in object has 'bib_type' property`, function () {
+            for (publication in object)
+                object[publication].should.have.property('bib_type');
+        });
+        it(`Each publication in object has 'entry_key' property`, function () {
+            for (publication in object)
+                object[publication].should.have.property('entry_key');
         });
     });
 });
