@@ -4,7 +4,6 @@ function bibtexToJson (blob) {
     let json;
     let parser = new converter.BibLatexParser(fileString, { processUnexpected: true });
     json = parser.output;
-    console.log(JSON.stringify(json));
     return json;
 }
 

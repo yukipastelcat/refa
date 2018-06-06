@@ -11,8 +11,10 @@ function configure () {
         synonyms = JSON.parse(fs.readFileSync(synonymsPath));
     } catch (err) {
         fs.mkdir(os.homedir() + '/.refa');
+        fs.mkdir(os.homedir() + '/.refa/tmp');
         fs.writeFile(synonymsPath, '[]');
     }
+    configuration['folder'] = os.homedir() + '/.refa';
 }
 configure();
 

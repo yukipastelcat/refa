@@ -44,17 +44,8 @@ eventsService.emitter.on('file-open-fileselected', function (filePaths) {
     mainViewModel.publications = bibtexService.bibtexToJson(blob);
     mainViewModel.tags = tagService.processTags(mainViewModel.publications);
     mainViewModel.synonyms = startService.synonyms;
-    mainWindow.loadURL(templateService.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
+    mainWindow.loadURL(templateService.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel, mainWindow.id));
     electron.ipcMain.once('request-view-model', function () {
         mainWindow.webContents.send('view-model-response', mainViewModel);
     });
-    /*bibtexService.bibtexToJson(blob).then(parsedContents => {
-        mainViewModel.publications = parsedContents;
-        mainViewModel.tags = tagService.processTags(mainViewModel.publications);
-        mainViewModel.synonyms = startService.synonyms;
-        mainWindow.loadURL(templateService.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel));
-        electron.ipcMain.once('request-view-model', function () {
-            mainWindow.webContents.send('view-model-response', mainViewModel);
-        });
-    });*/
 });
