@@ -1,5 +1,5 @@
-mixin entry(publication)
-    tr.entries-table__publication(id = `${publication}`, data-tags = `${publication.fields.keywords}`)
+mixin entry(publication, id)
+    tr.entries-table__publication(id = `${id}`, data-tags = `${publication.fields.keywords}`)
         td
             span(title=publication.bib_type) #{publication.bib_type}
         td

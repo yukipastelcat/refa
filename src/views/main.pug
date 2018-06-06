@@ -34,8 +34,8 @@ append screen
                         th Название
                         th Год
                         th
-                    each publication in model.publications
-                        +entry(publication)
+                    each publication, id in model.publications
+                        +entry(publication, id)
     script.
         const {ipcRenderer} = require('electron');
         ipcRenderer.send('request-view-model');
