@@ -1,4 +1,8 @@
-mixin input_edition(edition)
+mixin input_edition(editions)
     label.input
         span Издание
-        input(name='edition' type='text' value=edition)
+        - var editionString = ''
+        if (editions)
+            each edition in editions
+                - editionString += edition.text
+        input(name='edition' type='text' value=editionString)
