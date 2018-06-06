@@ -195,4 +195,50 @@ mixin publication(publication)
                     legend Дополнительные поля
                     +input_month(publication.fields.date)
                     +input_year(publication.fields.date)
-            
+            if (publication.unexpected_fields)
+                fieldset
+                    legend Нестандартные поля
+                    each value, name in publication.unexpected_fields
+                        case name
+                            when 'abstract'
+                                +input_abstract(value)
+                            when 'annote'
+                                +input_annote(value)
+                            when 'author'
+                                +input_author(value)
+                            when 'booktitle'
+                                +input_booktitle(value)
+                            when 'chapter'
+                                +input_chapter(value)
+                            when 'crossref'
+                                +input_crossref(value)
+                            when 'edition'
+                                +input_edition(value)
+                            when 'editor'
+                                +input_editor(value)
+                            when 'eprint'
+                                +input_eprint(value)
+                            when 'howpublished'
+                                +input_howpublished(value)
+                            when 'institution'
+                                +input_institution(value)
+                            when 'journal'
+                                +input_journal(value)
+                            when 'note'
+                                +input_note(value)
+                            when 'number'
+                                +input_number(value)
+                            when 'organization'
+                                +input_organisation(value)
+                            when 'pages'
+                                +input_pages(value)
+                            when 'publisher'
+                                +input_publisher(value)
+                            when 'series'
+                                +input_series(value)
+                            when 'title'
+                                +input_title(value)
+                            when 'type'
+                                +input_type(value)
+                            when 'volume'
+                                +input_volume(value)
