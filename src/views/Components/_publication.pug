@@ -75,39 +75,38 @@ mixin publication(publication)
                     +input_address(publication.fields.location)
                     +input_month(publication.fields.date)
                     +input_note(publication.fields.note)
-            if publication.type === 'conference'
+            if publication.bib_type === 'conference'
                 fieldset
                     legend Обязательные поля
-                    +input_author(publication.properties.author)
-                    +input_title(publication.properties.title)
-                    +input_booktitle(publication.properties.booktitle)
-                    +input_year(publication.properties.year)
+                    +input_author(publication.fields.author)
+                    +input_title(publication.fields.title)
+                    +input_booktitle(publication.fields.booktitle)
                 fieldset
                     legend Дополнительные поля
-                    +input_editor(publication.properties.editor)
-                    +input_pages(publication.properties.pages)
-                    +input_organisation(publication.properties.organisation)
-                    +input_publisher(publication.properties.publisher)
-                    +input_address(publication.properties.address)
-                    +input_note(publication.properties.month)
-            if publication.type === 'inbook'
+                    +input_editor(publication.fields.editor)
+                    +input_pages(publication.fields.pages)
+                    +input_organisation(publication.fields.organization)
+                    +input_publisher(publication.fields.publisher)
+                    +input_address(publication.fields.location)
+                    +input_note(publication.fields.month)
+            if publication.bib_type === 'inbook'
                 fieldset
                     legend Обязательные поля
-                    +input_author(publication.properties.author)
-                    +input_editor(publication.properties.editor)
-                    +input_title(publication.properties.title)
-                    +input_chapter(publication.properties.chapter)
-                    +input_pages(publication.properties.pages)
-                    +input_publisher(publication.properties.publisher)
-                    +input_year(publication.properties.year)
+                    +input_author(publication.fields.author)
+                    +input_editor(publication.fields.editor)
+                    +input_title(publication.fields.title)
+                    +input_chapter(publication.fields.chapter)
+                    +input_pages(publication.fields.pages)
+                    +input_publisher(publication.fields.publisher)
+                    +input_year(publication.fields.date)
                 fieldset
                     legend Дополнительные поля
-                    +input_volume(publication.properties.volume)
-                    +input_series(publication.properties.series)
-                    +input_address(publication.properties.address)
-                    +input_edition(publication.properties.edition)
-                    +input_month(publication.properties.month)
-                    +input_note(publication.properties.note)
+                    +input_volume(publication.fields.volume)
+                    +input_series(publication.fields.series)
+                    +input_address(publication.fields.location)
+                    +input_edition(publication.fields.edition)
+                    +input_month(publication.fields.date)
+                    +input_note(publication.fields.note)
             if publication.type === 'incollection'
                 fieldset
                     legend Обязательные поля
@@ -124,23 +123,23 @@ mixin publication(publication)
                     +input_address(publication.properties.address)
                     +input_month(publication.properties.month)
                     +input_note(publication.properties.note)
-            if publication.type === 'inproceedings'
+            if publication.bib_type === 'inproceedings'
                 fieldset
                     legend Обязательные поля
-                    +input_author(publication.properties.author)
-                    +input_title(publication.properties.title)
-                    +input_booktitle(publication.properties.booktitle)
-                    +input_year(publication.properties.year)
+                    +input_author(publication.fields.author)
+                    +input_title(publication.fields.title)
+                    +input_booktitle(publication.fields.booktitle)
+                    +input_year(publication.fields.date)
                 fieldset
                     legend Дополнительные поля
-                    +input_editor(publication.properties.editor)
-                    +input_series(publication.properties.series)
-                    +input_pages(publication.properties.pages)
-                    +input_organisation(publication.properties.organisation)
-                    +input_publisher(publication.properties.publisher)
-                    +input_address(publication.properties.address)
-                    +input_month(publication.properties.month)
-                    +input_note(publication.properties.note)
+                    +input_editor(publication.fields.editor)
+                    +input_series(publication.fields.series)
+                    +input_pages(publication.fields.pages)
+                    +input_organisation(publication.fields.organization)
+                    +input_publisher(publication.fields.publisher)
+                    +input_address(publication.fields.location)
+                    +input_month(publication.fields.date)
+                    +input_note(publication.fields.note)
             if publication.type === 'manual'        
                 fieldset
                     legend Обязательные поля

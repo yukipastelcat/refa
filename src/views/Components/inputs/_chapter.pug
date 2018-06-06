@@ -1,4 +1,8 @@
-mixin input_chapter(chapter)
+mixin input_chapter(chapters)
     label.input
         span Номер главы
-        input(name='chapter' type='number' min='1' value=chapter)
+        - var chaptersString = ''
+        if (chapters)
+            each chapter in chapters
+                - chaptersString += chapter.text
+        input(name='chapter' type='number' min='1' value=chaptersString)

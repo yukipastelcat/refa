@@ -1,4 +1,8 @@
-mixin input_booktitle(booktitle)
+mixin input_booktitle(booktitles)
     label.input
         span Название книги
-        input(name='booktitle' type='text' value=booktitle)
+        - var booktitleString = ''
+        if (booktitles)
+            each booktitle in booktitles
+                - booktitleString += booktitle.text
+        input(name='booktitle' type='text' value=booktitleString)
