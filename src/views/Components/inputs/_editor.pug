@@ -6,11 +6,16 @@ mixin input_editor(editors)
             - var editorCount = 0
             each editor in editors
                 - editorCount++
-                each family in editor.family
-                    - editorString += family.text
+                if (editor.literal)
+                    each literal in editor.literal
+                        - editorString += literal.text
+                if (editor.family)
+                    each family in editor.family
+                        - editorString += family.text
                 - editorString += ' '
-                each given in editor.given
-                    - editorString += given.text
+                if (editor.given)
+                    each given in editor.given
+                        - editorString += given.text
                 if (editorCount < editors.length)
                     - editorString += ' and '
         input(name='editor' type='text' value=editorString)
