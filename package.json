@@ -4,8 +4,9 @@
     "description": "Reference editor",
     "main": "src/app.js",
     "scripts": {
-        "start": "electron .",
-        "test": "./node_modules/.bin/mocha tests/bibtex.js tests/start.js tests/tag.js"
+        "start": "./node_modules/electron/dist/electron .",
+        "test": "./node_modules/.bin/mocha tests/bibtex.js tests/start.js tests/tag.js",
+        "build-bem": "gulp build-css build-js"
     },
     "repository": {
         "type": "git",

@@ -3,7 +3,11 @@
 ## Сборка и запуск проекта
 ```
 npm install
-gulp build-css
-gulp build-js
+npm run build-bem
 npm start
+```
+
+*Для работы с gulp необходимо установить пакет gulp глобально:*
+```
+npm install -g gulp
 ```
