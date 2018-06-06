@@ -1,11 +1,11 @@
 {
     "name": "refa",
-    "version": "0.16.0",
+    "version": "0.17.1",
     "description": "Reference editor",
     "main": "src/app.js",
     "scripts": {
         "start": "./node_modules/electron/dist/electron .",
-        "test": "./node_modules/.bin/mocha tests/bibtex.js tests/start.js tests/tag.js",
+        "test": "./node_modules/.bin/mocha tests/start.js tests/bibtex.js tests/tag.js tests/synonyms.js",
         "build-bem": "gulp build-css build-js"
     },
     "repository": {

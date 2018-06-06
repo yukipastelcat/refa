@@ -1,3 +1,4 @@
+let findSynonym = require('../../../services/synonymService').findSynonym;
 window.model = {};
 window.model.synonyms = [];
 let search = function (regex) {
@@ -18,24 +19,6 @@ let search = function (regex) {
         }
     });
 }
-
-let findSynonym = function (regex) {
-    let BreakException = {};
-    let synonymRegex;
-    window.model.synonyms.forEach(synonym => {
-        try {
-            if (regex.test(synonym)) {
-                synonymRegex = new RegExp(synonym, 'i');
-                throw BreakException;
-            }
-        }
-        catch(err) {
-            if (err !== BreakException) throw err;
-        }
-    });
-    return synonymRegex || '';
-}
-
 let initOmnibox = function () {
     document.querySelector(`.search input[type='search']`).addEventListener('input', function () {
         if (!this.value) {
@@ -43,13 +26,13 @@ let initOmnibox = function () {
             return;
         }
         let regex = new RegExp(this.value.replace(/ /g, '|'), 'i');
-        let synonyms = findSynonym(regex);
-            if (synonyms) {
-                search(synonyms);
-            }
-            else {
-                search(regex);
-            }
+        let synonyms = findSynonym(regex, window.model.synonyms);
+        if (synonyms) {
+            search(synonyms);
+        }
+        else {
+            search(regex);
+        }
     }, { passive: true });
 }
 
