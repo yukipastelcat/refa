@@ -1,4 +1,9 @@
-mixin input_school(school)
+mixin input_school(schools)
     label.input
         span Институт, в котором защищалась диссертация
-        input(name='school' type='text' value=school)
+        - var schoolString = ''
+        if (schools)
+            each schoolGroup in schools
+                each school in schoolGroup
+                    - schoolString += school.text
+        input(name='school' type='text' value=schoolString)
