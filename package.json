@@ -6,7 +6,8 @@
     "scripts": {
         "start": "./node_modules/electron/dist/electron .",
         "test": "./node_modules/.bin/mocha tests/start.js tests/bibtex.js tests/tag.js tests/synonyms.js",
-        "build-bem": "gulp build-css build-js"
+        "build-bem": "gulp build-css build-js",
+        "benchmark": "./node_modules/.bin/mocha tests/performance.js --slow 0"
     },
     "repository": {
         "type": "git",
