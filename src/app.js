@@ -45,6 +45,10 @@ eventsService.emitter.on('file-open-fileselected', function (filePaths) {
     let blob = fs.readFileSync(filePaths[0]);
     bibtexDir = path.dirname(filePaths[0]);
     mainViewModel.publications = bibtexService.bibtexToJson(blob);
+    for (id in mainViewModel.publications) {
+        let year = new Date(Date.parse(mainViewModel.publications[id].fields.date)).getFullYear();
+        mainViewModel.publications[id].fields['year'] = year;
+    }
     mainViewModel.tags = tagService.processTags(mainViewModel.publications);
     mainViewModel.synonyms = startService.synonyms;
     mainWindow.loadURL(templateService.renderTemplate(`${__dirname}/views/main.pug`, mainViewModel, mainWindow.id));

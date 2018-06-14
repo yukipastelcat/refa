@@ -5,4 +5,4 @@ mixin input_chapter(chapters)
         if (chapters)
             each chapter in chapters
                 - chaptersString += chapter.text
-        input(name='chapter' type='number' min='1' value=chaptersString)
+        input(name='chapter' type='number' min='1' value=chaptersString readonly)

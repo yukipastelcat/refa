@@ -6,4 +6,4 @@ mixin input_organisation(organizations)
             each organizationGroup in organizations
                 each organization in organizationGroup
                     - organizationString += organization.text
-        input(name='organisation' type='text' value=organizationString)
+        input(name='organisation' type='text' value=organizationString readonly)

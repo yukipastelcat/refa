@@ -6,4 +6,4 @@ mixin input_school(schools)
             each schoolGroup in schools
                 each school in schoolGroup
                     - schoolString += school.text
-        input(name='school' type='text' value=schoolString)
+        input(name='school' type='text' value=schoolString readonly)

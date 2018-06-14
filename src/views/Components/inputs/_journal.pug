@@ -4,4 +4,4 @@ mixin input_journal(journals)
         - var journalString = ''
         each journal in journals
             - journalString += journal.text
-        input(name='journal' type='text' value=journalString)
+        input(name='journal' type='text' value=journalString readonly)

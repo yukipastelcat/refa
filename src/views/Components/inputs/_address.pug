@@ -6,4 +6,4 @@ mixin input_address(addresses)
             each addressGroup in addresses
                 each address in addressGroup
                     - addressString += address.text
-        input(name='address' type='text' value=addressString)
+        input(name='address' type='text' value=addressString readonly)

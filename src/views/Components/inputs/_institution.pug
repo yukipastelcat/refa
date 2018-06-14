@@ -6,4 +6,4 @@ mixin input_institution(institutions)
             each institutionGroup in institutions
                 each institution in institutionGroup
                     - institutionsString += institution.text
-        input(name='institution' type='text' value=institutionsString)
+        input(name='institution' type='text' value=institutionsString readonly)

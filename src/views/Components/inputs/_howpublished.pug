@@ -5,4 +5,4 @@ mixin input_howpublished(howpublishedlist)
         if (howpublishedlist)
             each howpublished in howpublishedlist
                 - howpublishedString += howpublished.text
-        input(name='howpublished' type='text' value=howpublishedString)
+        input(name='howpublished' type='text' value=howpublishedString readonly)

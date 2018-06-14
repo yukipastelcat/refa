@@ -1,7 +1,7 @@
 mixin input_pubtype(type)
     label.input.input_select
         span Тип публикации
-        select(name='publicationtype')
+        select(name='publicationtype' disabled)
             option(value='article' selected= (type == 'article')) Статья из журнала
             option(value='book' selected= (type == 'book')) Книга
             option(value='booklet' selected= (type == 'booklet')) Буклет

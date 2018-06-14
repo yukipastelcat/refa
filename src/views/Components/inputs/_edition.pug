@@ -5,4 +5,4 @@ mixin input_edition(editions)
         if (editions)
             each edition in editions
                 - editionString += edition.text
-        input(name='edition' type='text' value=editionString)
+        input(name='edition' type='text' value=editionString readonly)

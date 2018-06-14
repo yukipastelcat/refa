@@ -1,14 +1,18 @@
+let searchService = require('../../../services/searchService');
 let tagSearchable = () => {
     document.querySelectorAll('.tag').forEach(tag => {
         tag.querySelector(`input[type='checkbox']`).addEventListener('change', function () {
-            let regexString = '';
+            let include = [];
+            let exclude = [];
             this.closest('form').querySelectorAll(`input[type='checkbox']:checked`).forEach(checked => {
-                regexString += `${checked.value}|`;
+                include.push(checked.value);
             });
-            regexString = regexString.substring(0, regexString.length - 1);
-            let regex = new RegExp(regexString, 'g');
+            this.closest('form').querySelectorAll(`input[type='checkbox']:not(:checked)`).forEach(unchecked => {
+                exclude.push(unchecked.value);
+            });
+            let regex = searchService.tagQuery(include, exclude);
             document.querySelectorAll('.entries-table__publication').forEach(publication => {
-                if (!regex.test(publication.dataset.tags)) {
+                if (!publication.dataset.tags.match(regex)) {
                     publication.classList.add('entries-table__publication_hidden_tag');
                 }
                 else {

@@ -5,4 +5,4 @@ mixin input_title(titles)
         each title in titles
             - titleString += title.text
         - titleString += ' '
-        input(name='title' type='text' value=titleString)
+        input(name='title' type='text' value=titleString readonly)

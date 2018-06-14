@@ -5,4 +5,4 @@ mixin input_abstract(abstracts)
             - var abstractString = ''
             each abstract in abstracts
                 - abstractString += abstract.text
-        textarea(name='abstract' cols='80' rows='5')= abstractString
+        textarea(name='abstract' cols='80' rows='5' readonly)= abstractString

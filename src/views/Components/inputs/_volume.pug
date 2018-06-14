@@ -9,4 +9,4 @@ mixin input_volume(volumes)
                 - volumeString += volume.text
                 if (volumeCount < volumes.length)
                     - volumeString += ', '
-        input(name='volume' type='number' min='1' value=volumeString)
+        input(name='volume' type='number' min='1' value=volumeString readonly)

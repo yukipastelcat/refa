@@ -5,4 +5,4 @@ mixin input_booktitle(booktitles)
         if (booktitles)
             each booktitle in booktitles
                 - booktitleString += booktitle.text
-        input(name='booktitle' type='text' value=booktitleString)
+        input(name='booktitle' type='text' value=booktitleString readonly)

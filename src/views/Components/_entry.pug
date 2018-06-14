@@ -28,7 +28,7 @@ mixin entry(publication, id)
                     - titleString += title.text
                 span(title=titleString)= titleString
         td
-            span(title=`${publication.fields.date}`) #{publication.fields.date}
+            span(title=`${publication.fields.year}`) #{publication.fields.year}
         td
             details
                 summary Подробнее

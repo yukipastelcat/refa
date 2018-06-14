@@ -5,4 +5,4 @@ mixin input_note(notes)
         if (notes)
             each note in notes
                 - noteString += note.text
-        textarea(name='note')= noteString
+        textarea(name='note' readonly)= noteString

@@ -5,4 +5,4 @@ mixin input_series(series)
         if (series)
             each serie in series
                 - seriesString += serie.text
-        input(name='series' type='text' value=seriesString)
+        input(name='series' type='text' value=seriesString readonly)
