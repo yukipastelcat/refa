@@ -31,8 +31,14 @@ let searchQuery = (query, dictionary) => {
             return synonym.match(wordRegexp);
         });
     });
-    synonymsQuery = `${synonymsQuery.substring(0, synonymsQuery.length - 1)}|${query.replace(/ /g, '|')}`;
-    return new RegExp(synonymsQuery, 'ig');
+    let searchQuery = '';
+    if (synonymsQuery) {
+        searchQuery = `${synonymsQuery.substring(0, synonymsQuery.length - 1)}|${query.replace(/ /g, '|')}`;
+    }
+    else {
+        searchQuery = `${query.replace(/ /g, '|')}`;
+    }
+    return new RegExp(searchQuery, 'ig');
 }
 
 exports.tagQuery = tagQuery;

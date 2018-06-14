@@ -3,7 +3,7 @@ window.model.synonyms = [];
 let searchService = require('../../../services/searchService');
 let filter = function (regex) {
     document.querySelectorAll('.entries-table__publication').forEach(publication => {
-        if (!regex.test(publication.dataset.tags)) {
+        if (!publication.dataset.tags.match(regex)) {
             publication.classList.add('entries-table__publication_hidden_search');
         }
         else {
@@ -11,7 +11,7 @@ let filter = function (regex) {
         }
     });
     document.querySelectorAll('.tag').forEach(tag => {
-        if (!regex.test(tag.getAttribute('title'))) {
+        if (!tag.getAttribute('title').match(regex)) {
             tag.classList.add('tag_hidden');
         }
         else {
