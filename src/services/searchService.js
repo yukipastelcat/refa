@@ -19,10 +19,10 @@ let tagQuery = (include, exclude) => {
 }
 
 let searchQuery = (query, dictionary) => {
-    query = query.split(' ');
+    let queryWords = query.split(' ');
     let synonymsQuery = '';
-    query.forEach(word => {
-        let wordRegexp = new RegExp(`\\b${word}\\b`, 'g');
+    queryWords.forEach(word => {
+        let wordRegexp = new RegExp(`${word}`, 'g');
         dictionary.some(synonym => {
             if (synonym.match(wordRegexp)) {
                 synonymsQuery += synonym;
@@ -31,8 +31,8 @@ let searchQuery = (query, dictionary) => {
             return synonym.match(wordRegexp);
         });
     });
-    synonymsQuery = synonymsQuery.substring(0, synonymsQuery.length - 1);
-    return new RegExp(synonymsQuery.replace(/ /g, '|'), 'i');
+    synonymsQuery = `${synonymsQuery.substring(0, synonymsQuery.length - 1)}|${query.replace(/ /g, '|')}`;
+    return new RegExp(synonymsQuery, 'ig');
 }
 
 exports.tagQuery = tagQuery;
