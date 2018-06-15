@@ -10,7 +10,11 @@ let processTags = function (publications) {
             });
         }
     }
-    return keywords;
+    let sortedKeywords = {};
+    Object.keys(keywords).sort().forEach(key => {
+        sortedKeywords[key] = keywords[key];
+    });
+    return sortedKeywords;
 }
 
 exports.processTags = processTags;
